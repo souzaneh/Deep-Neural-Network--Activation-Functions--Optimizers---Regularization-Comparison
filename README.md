@@ -114,7 +114,7 @@ Two scenarios were evaluated (on 10 epochs):
 
 ✅ Regularization significantly reduced overfitting (green curves).  
 Although accuracy slightly dropped, generalization improved.  
-**Note:** For the scenario **without regularization**, the model was trained only for 50 epochs instead of 100 due to long training time and Colab runtime constraints.
+**Note:** For the scenario **without regularization**, the model was trained only for 50.
 
 ![Regularization Comparison](images/Regularization.png)  
 
