@@ -1,27 +1,25 @@
-
 # 🧠 Deep Neural Network on CIFAR-10  
-### Activation Functions, Transfer Learning, Optimizers & Regularization  
 
+### Activation Functions, Transfer Learning, Optimizers & Regularization  
 ---
 
 ## 🎯 Project Overview  
 
-This project explores **Deep Neural Networks (DNNs)** using the **CIFAR-10** dataset and demonstrates the impact of various deep learning techniques on model performance, including:
+This project explores Deep Neural Networks (DNNs) using the **CIFAR-10** dataset and demonstrates the effect of various deep learning techniques on model performance, including:
 
 - Activation Functions  
 - Transfer Learning  
-- Optimization Algorithms  
+- Optimizers  
 - Regularization Strategies  
 
-The implementation is done in **Python** using **TensorFlow** and **Keras**, executed in **Google Colab**.
+The implementation is done in **Python** using **TensorFlow** and **Keras** on **Google Colab**.
 
 ---
 
 ## 📚 Dataset  
-
 - **Name:** CIFAR-10  
-- **Description:** 60,000 color images (32×32 pixels) across 10 distinct classes  
-- **Data Split:** 85% training / 15% testing  
+- **Description:** 60,000 color images (32×32 pixels) across 10 classes  
+- **Split:** 85% training / 15% testing  
 
 ---
 
@@ -29,7 +27,7 @@ The implementation is done in **Python** using **TensorFlow** and **Keras**, exe
 
 - **Platform:** Python (Google Colab)  
 - **Frameworks:** TensorFlow, Keras  
-- **Libraries Used:**
+- **Libraries Used:**  
   - `numpy`  
   - `pandas`  
   - `matplotlib`  
@@ -41,90 +39,96 @@ The implementation is done in **Python** using **TensorFlow** and **Keras**, exe
 
 ## 🏗️ Base Model Architecture  
 
-- **Dense Layer 1:** 50 neurons  
-- **Dense Layer 2:** 100 neurons  
-- **Output Layer:** 10 neurons with `softmax` activation  
+- Dense Layer 1: 50 neurons  
+- Dense Layer 2: 100 neurons  
+- Output Layer: 10 neurons with `softmax` activation  
 - **Optimizer:** SGD  
-- **Loss Function:** Categorical Crossentropy  
-- **Metric:** Accuracy  
+- **Loss Function:** `categorical_crossentropy`  
+- **Metric:** `accuracy`  
 
 ---
 
 ## 🔍 Project Tasks & Results  
 
-### 1. 🔌 Activation Function Comparison  
+### 1. 🔌 Activation Functions Comparison  
 
-Two activation functions were tested:
+Two types of activation functions were tested:  
 - **SELU** with self-normalizing weight initialization  
-- **LeakyReLU** with Batch Normalization  
+- **LeakyReLU** with BatchNormalization  
 
-📊 **Result:**  
-**SELU** achieved superior accuracy and lower loss on both training and validation datasets over 50 epochs.
+**🔍 Result:**  
+SELU achieved better accuracy and lower loss on both training and validation datasets over 50 epochs.  
 
-![Activation Comparison](images/selu_leakyrelu_comparison.png)
+![Activation Comparison](images/selu_leakyrelu_comparison.png)  
 
 ---
 
-### 2. 🐎 Transfer Learning – Horse Classification (Binary)  
+### 2. 🐎 Transfer Learning for Horse Classification (Binary Classification)  
 
-- The best model from earlier stages was reused and modified for binary classification.  
-- A subset of **6,000 CIFAR-10** samples was used.  
-- The output layer was modified to use `sigmoid`.  
+- The best model from the previous task was reused (loaded from Google Drive)  
+- Output layer modified for binary classification (`sigmoid`)  
+- Used a subset of **6,000 CIFAR-10** images  
 
-Two configurations were compared over 10 epochs:
+Two scenarios were evaluated (on 10 epochs):  
 
-| Configuration      | Frozen Layers | Accuracy | Training Time |
-|--------------------|---------------|----------|----------------|
-| Scenario 1         | 4 frozen      | 0.9003   | 73.30 sec       |
-| Scenario 2         | All trainable | 0.9031   | 91.14 sec       |
+| Configuration      | Frozen Layers | Accuracy | Training Time |  
+|--------------------|---------------|----------|---------------|  
+| Scenario 1         | 4 frozen      | 0.9003   | 73.30s        |  
+| Scenario 2         | All trainable | 0.9031   | 91.14s        |  
 
-✅ Training time increased slightly with more trainable layers.  
-The small improvement in accuracy suggests further training could lead to better results.
+✅ Training time increased with more trainable layers. Slight improvement in accuracy suggests better performance could be achieved with more epochs.
 
 ---
 
 ### 3. ⚙️ Optimizer Comparison (50 Epochs)  
 
-**Tested Optimizers:**
+**Optimizers Tested:**  
 - SGD  
-- SGD with Momentum  
+- SGD + Momentum  
 - Nesterov Momentum  
 - AdaGrad  
 - Adam  
 - Nadam  
 
-📊 **Result Summary:**
-- **Adam** and **Nadam** yielded better training accuracy and lower loss.
-- **SGD variants** generalized slightly better on validation data.
+**Result Summary:**  
+- **Adam** and **Nadam** showed better performance on training loss and accuracy  
+- On validation data, **SGD variants** appeared to generalize better  
 
-![Optimizer Comparison](images/Optimizer_Comparison.png)
+![Optimizer Comparison](images/Optimizer_Comparison.png)  
 
 ---
 
 ### 4. 🛡️ Regularization Techniques (100 Epochs)  
 
-**Applied Techniques:**
+**Techniques Applied:**  
 - Dropout  
 - Monte Carlo Dropout (MC Dropout)  
 - L1-L2 Regularization  
 
-📈 **Results:**
+**📈 Results:**  
 
-| Regularization Method | Test Accuracy |
-|------------------------|----------------|
-| Dropout                | 0.4183         |
-| MC Dropout             | 0.4227         |
+| Method           | Accuracy |  
+|------------------|----------|  
+| Dropout          | 0.4183   |  
+| MC Dropout       | 0.4227   |  
 
-✅ **Regularization** reduced overfitting, as indicated by green loss curves.  
-While accuracy slightly decreased, **MC Dropout** provided the best generalization.
+✅ Regularization significantly reduced overfitting (green curves).  
+Although accuracy slightly dropped, generalization improved.  
+**Note:** For the scenario **without regularization**, the model was trained only for 50 epochs instead of 100 due to long training time and Colab runtime constraints.
 
-![Regularization Comparison](images/Regularization.png)
+![Regularization Comparison](images/Regularization.png)  
 
 ---
 
 ## 💾 Code  
+- Notebook: `codes.ipynb`  
 
-- Main Notebook: `codes.ipynb`  
+---
+
+## 👩‍💻 Author  
+
+**Souzaneh Sehati**  
+GitHub: [https://github.com/souzaneh](https://github.com/souzaneh)
 
 ---
 
@@ -137,8 +141,4 @@ pandas
 scikit-learn
 pickle
 time
-
-👩‍💻 Author
-Souzaneh Sehati
-GitHub: https://github.com/souzaneh
-
+tensorflow
